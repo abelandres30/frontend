@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="jquery.min.js"></script>
+
+</head>
+
+<body>
+    <div class="container">
+        <div class="card">
+            <div class="card-header">
+                <p></p>
+                <h6 style="text-align: center;">INDQ Events</h6>
+                <h6 style="text-align: center">Registro</h6>
+            </div>
+            <div class="card-content">
+                <form #userNewForm="ngForm">
+                    <div class="row">
+                        <div class="input-field col-lg-6">
+                            <p>Nombre (s)</p>
+                            <input class="form-control" #firstName="ngModel" type="text" name="firstName"
+                                [(ngModel)]="usersService.SelectUser.firstName" placeholder="Ingresa tu nombre">
+                        </div>
+                        <div class="input-field col-lg-6">
+                            <p>Apellido (s)</p>
+                            <input class="form-control" #lastName="ngModel" type="text" name="lastName"
+                                [(ngModel)]="usersService.SelectUser.lastName" placeholder="Ingresa tus apellidos">
+                        </div>
+                        <div class="input-field col-lg-6">
+                            <p>Correo</p>
+                            <input class="form-control" #email="ngModel" type="email" name="email"
+                                [(ngModel)]="usersService.SelectUser.email" placeholder="Ingresa tu correo electronico">
+                        </div>
+                        <div class="input-field col-lg-6">
+                            <!-- <input class="form-control" #gender="ngModel" type="text" name="gender"
+                            [(ngModel)]="usersService.SelectUser.gender" placeholder="Ingresa tu genero"> -->
+                            <p>Genero</p>
+                            <form name="formularioRadio" id="formularioRadio">
+                                <div class="row" style="margin-left: 10%;">
+                                    <div class="input-field col-lg-4">
+                                        <p>
+                                            <label>
+                                                <input value="Masculino" name="radioButton" type="radio" checked />
+                                                <span>Masculino</span>
+                                            </label>
+                                        </p>
+                                    </div>
+                                    <div class="input-field col-lg-4">
+                                        <p>
+                                            <label>
+                                                <input value="Femenino" name="radioButton" type="radio" />
+                                                <span>Femenino</span>
+                                            </label>
+                                        </p>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="input-field col-lg-6">
+                            <p>Contraseña</p>
+                            <input class="form-control" #password="ngModel" type="password" name="password"
+                                [(ngModel)]="usersService.SelectUser.password" placeholder="Ingresa tu contraseña">
+
+                        </div>
+                        <div class="input-field col-lg-6">
+                            <p>Confirmar contraseña</p>
+                            <input id="Confpassword"  class="form-control" type="password" name="Confpassword"
+                                placeholder="Confirmar contraseña">
+                        </div>
+                    </div>
+                    <div class="card-action">
+                        <div class="input-field col-lg-12">
+                            <button (click)="ObtenerUsers(userNewForm)" class="btn btn-success ">Guardar</button>
+                            <button (click)="LimpiarForm(userNewForm)" class="btn btn-primary right">Limpiar</button>
+                        </div>
+                        <a (click)="LimpiarForm(userNewForm)"  style="margin-left: 36%; text-align: center; text-decoration: underline; color: blue; font-size:small; font-weight: bold; "
+                            routerLink="/login">¿Ya tienes una
+                            cuenta? Inicia sesion</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

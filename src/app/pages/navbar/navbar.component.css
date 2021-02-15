@@ -1,0 +1,62 @@
+
+
+  nav.navbar {
+    background-color: rgb(142, 146, 168);
+    z-index: 99;
+    width: 100%;
+    top: 0; /* At the top */
+    position: fixed;
+  }
+  /* Style the navbar links */
+  nav.navbar a {
+    text-decoration: none;
+    line-height: 25px;
+    border-radius: 4px;
+  }
+
+  a {
+    font-size: 14px;
+  }
+  a:after {
+    display: block;
+    content: "";
+    border-bottom: solid 3px white;
+    transform: scaleX(0);
+    transition: transform 250ms ease-in-out;
+  }
+  a:hover:after {
+    transform: scaleX(1);
+  }
+  a.fromRight:after {
+    transform-origin: 100% 50%;
+  }
+  a.fromLeft:after {
+    transform-origin: 0% 50%;
+  }
+
+  
+  .link-no-underline:hover {
+    text-decoration: none !important;
+  }
+  
+  .dropdown-content {
+    background-color: rgb(51, 61, 151);
+    min-width: 300px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+  }
+  
+  .dropdown-content a {
+    color: white;
+  }
+  
+  .dropdown-content a:hover {
+    background-color: rgb(51, 61, 151);
+    color: white;
+  }
+  
+  .dropdown-toggle::after {
+    color: white;
+  }
+  
+  ::-webkit-input-placeholder { color: White; } 

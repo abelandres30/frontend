@@ -1,0 +1,10 @@
+.card{
+    margin-block-start: 7%;
+    border-style: ridge;
+    width: 50%;
+    margin-left: 20%;
+}
+button{
+    margin-left: 15%;
+    width: 70%
+}

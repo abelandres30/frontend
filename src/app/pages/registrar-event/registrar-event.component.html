@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <app-navbar></app-navbar>
+    <div class="container">
+        <div class="card">
+            <div class="card-header">
+                <p></p>
+                <h6 style="text-align: center;">INDQ Events</h6>
+                <h6 style="text-align: center">Agregar evento</h6>
+            </div>
+            <div class="card-content">
+                <form #eventForm="ngForm">
+                    <div class="row">
+                        <div class="input-field col-sm-6 col-lg-6 col-12">
+                            <p>Titulo</p>
+                            <input type="text" class="form-control" #title="ngModel" name="title" 
+                            [(ngModel)]="eventService.SelectEvent.title" placeholder="Ingrese titulo del evento">
+                            <p style="margin-block-start: 12%;">Descricion</p>
+                            <!-- <input type="text" class="form-control" #title="ngModel" name="title" 
+                            [(ngModel)]="eventService.SelectEvent.title" placeholder="Ingrese titulo del evento"> -->
+                            <div class="form-group">
+                                <textarea  #description="ngModel" name="description" 
+                                [(ngModel)]="eventService.SelectEvent.description" class="form-control" id="exampleFormControlTextarea1" rows="3"
+                                placeholder="Ingrese Descricion del evento"></textarea>
+                              </div>
+                        </div>
+                        <div class="input-field col-sm-6 col-lg-6 col-12">
+                            <p>Imagen del evento</p>
+                            <div>
+                                <img *ngIf="ImagenVacia" src="../../../assets/empty-folder.png" width="50%" >
+                                <img  *ngIf="!ImagenVacia" id="img1" width="90%" height="90%"  >
+                            </div>
+                            <form style="margin-block-start: 2%;">
+                                <div class="form-group" >
+                                  <input #imagen="ngModel" name="imagen" 
+                                  [(ngModel)]="eventService.SelectEvent.imagen" (change)="handleFileInput($event.target.files)" (click)="registrarImagen()"  accept=".png, .jpg" type="file" class="form-control-file"  id="inputFile1" >
+                                </div>
+                              </form>
+                        </div>
+                    </div>
+                    <p>Fecha</p>
+                    <div class="form-group row">
+                        <div class="col-10 col-lg-6">
+                          <input #date="ngModel" name="date" data-date-format="DD MMMM YYYY"
+                          [(ngModel)]="eventService.SelectEvent.date" class="form-control" type="date" value="2011-08-19" id="date">
+                        </div>
+                      </div>
+
+                    <div class="card-action"> 
+                        <div class="row">
+                            <div class="input-field col-lg-4 col-sm-4 col-12" style="width: 100%; margin-left: 17%;">
+                                <button  class="btn btn-success">Cancelar</button>
+                            </div>
+                              <div class="input-field col-lg-4 col-sm-4 col-12" style="width: 100%;">
+                                <button (click)="Registrarevento(eventForm)" class="btn btn-success">Registrar</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

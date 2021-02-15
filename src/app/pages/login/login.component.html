@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="card">
+            <div class="card-header">
+                <p></p>
+                <h6 style="text-align: center;">INDQ Events</h6>
+                <h6 style="text-align: center">Inicio de sesion</h6>
+            </div>
+            <div class="card-content">
+                <form #userForm="ngForm">
+                    <div class="row">
+                        <div class="input-field col-lg-12 col-sm-12 col-12">
+                            <p>Ingrese correo electronico</p>
+                            <input class="form-control" #email="ngModel" type="email" name="email"
+                                [(ngModel)]="usersService.SelectUser.email" placeholder="Ingresa tu correo electronico">
+                        </div>
+                        <div class="input-field col-lg-12 col-sm-12 col-12">
+                            <p>Ingrese contraseña</p>
+                            <input class="form-control" #password="ngModel" type="password" name="password"
+                                [(ngModel)]="usersService.SelectUser.password" placeholder="Ingresa tu contraseña">
+                        </div>
+                    </div>
+                    <div class="card-action">
+                        <div class="input-field col s12">
+                            <button (click)="IniciarCuenta(userForm)" class="btn btn-success">Acceder</button>
+                        </div>
+                        <a (click)="LimpiarForm(userForm)"   style="text-decoration: underline; margin-left: 22%; text-align: center; color: blue; font-size:small; font-weight: bold; "
+                            routerLink="/crearcuenta">¿No tienes una cuenta? Registrate</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+    </div>
+</body>
+
+</html>

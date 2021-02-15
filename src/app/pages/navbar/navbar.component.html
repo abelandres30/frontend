@@ -1,0 +1,33 @@
+<nav id="navbar" class="navbar navbar-expand-lg navbar-dark" role="navigation">
+    <button class=" navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <form class="navbar-form navbar-left" style="margin-left: 35%;">
+        <div class="input-group">
+            <input style="color: white;" type="text" class="form-control " placeholder="Search">
+            <div class="input-group-btn">
+                <button class="btn btn-primary" type="submit">
+                    Buscar
+                </button>
+            </div>
+        </div>
+    </form>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="false">
+                    <h6 class="dropdown-toggle" style="color: white; margin-block-start: 10%;">{{userName}}</h6>
+                    
+                </a>
+                <div class="dropdown-menu dropdown-menu-right text-left" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" routerLink="/menu">Menu</a>
+                    <a class="dropdown-item" routerLink="/registrarevent" >Agregar evento</a>
+                    <div class="dropdown-divider"></div>
+                    <a (click)="cerrarSesion()" class="dropdown-item">Cerrar sesion</a>
+                </div>
+            </li>
+        </ul>
+    </div>
+</nav>
