@@ -53,7 +53,7 @@ export class LoginComponent implements OnInit {
           } else {
             Swal.fire({
               icon: 'error',
-              text: 'No se encontro el usuario',
+              text: 'Usuario o contraseña incorrectos',
             })
           }
         });

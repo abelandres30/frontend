@@ -4,6 +4,10 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='https://api.mapbox.com/mapbox-gl-js/v2.1.1/mapbox-gl.css' rel='stylesheet' />
+    <script src="https://api.mapbox.com/mapbox-gl-js/v2.1.1/mapbox-gl.js"></script>
+    <link rel="stylesheet" href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.5.1/mapbox-gl-geocoder.css" type="text/css">
+    
     <title>Document</title>
 </head>
 <body>
@@ -17,7 +21,7 @@
                         <div class="col-lg-6 col-sm-6 col-12">
                             <h6>{{event.title}}</h6>
                         </div>
-                        <div class="col-lg-6 col-sm-6 col-12">
+                        <div class="col-lg-6 col-sm-6 col-12" id="attendances">
                             <h6>{{event.attendances}}</h6>  
                         </div>
                     </div>
@@ -26,7 +30,11 @@
                             <h6>{{event.date}}</h6>
                         </div>
                         <div class="col-lg-6 col-sm-6 col-12">
-                            <h6>{{event.location}}</h6>
+                            <button  data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample"
+                             (click)="ObtenerLocalizaciones(event.location,i)"   class="form-control btn btn-info">Ver direccion</button>
+                            <div *ngIf="posicion === i" class="collapse" id="collapseExample">
+                                    <div id="map"></div>
+                                </div>
                         </div>
                     </div>
                     <div class="row">
@@ -34,7 +42,8 @@
                             <h6>{{event.description}}</h6>
                         </div>
                         <div class="col-lg-6 col-sm-6 col-12">
-                            <button class="form-control btn btn-success" (click)="AsistirEvent(event._id)">Asistire</button>
+                            <button *ngIf="!booleanEvent[i]" class="form-control btn btn-success" (click)="AsistirEvent(event._id,i)">Asistire</button>
+                            <button *ngIf="booleanEvent[i]" class="form-control btn btn-danger" (click)="CancelarEvent(event._id,i)">Cancelar Asistencia</button>
                         </div>
                     </div>
                 </div>
@@ -65,5 +74,21 @@
             </ul>
         </nav>
     </div>
+    <!-- Modal -->
+<!-- <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog " role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Ubicacion del evento</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div id="map"></div>
+        </div>
+      </div>
+    </div>
+  </div> -->
 </body>
 </html>

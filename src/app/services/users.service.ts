@@ -15,14 +15,14 @@ export class UsersService {
   getUsers() {
     return this.http.get(this.URL_API);
   };
-  postUsers(Users: Users): Observable<any> {
+  postUsers(Users: any): Observable<any> {
     return this.http.post(this.URL_API, Users);
   }  
   putUsers(Users: Users) {
-    return this.http.put(this.URL_API + '/${Users._id}',Users);
+    return this.http.put(this.URL_API + '/' + Users._id,Users);
   }
   deleteUsers(_id: string) {
-    return this.http.delete(this.URL_API + '/${_id}');
+    return this.http.delete(this.URL_API + '/' + _id);
   }
   getUserByid(_id: any) {
     return this.http.get(this.URL_API + '/' +  _id);

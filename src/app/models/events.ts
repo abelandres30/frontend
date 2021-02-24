@@ -4,7 +4,7 @@ export class Events {
     description: string = "";
     date: Date = new Date();
     imagen: any;
-    attendaces: number = 0;
+    attendances: number = 0;
     willYouAttend: boolean = false;
     location: string = ""; 
 }

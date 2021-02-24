@@ -2,14 +2,14 @@ import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import { Users } from '../models/users';
 import { Observable } from 'rxjs';
-import { EventAttend } from '../models/eventAttend';
+import { EventAttends } from '../models/eventAttend';
 @Injectable({
   providedIn: 'root'
 })
 export class EventAttendService {
   readonly URL_API = 'http://localhost:3000/evento/asistencia'; 
-  SelectEventAttend: EventAttend = new EventAttend;
-  EventAttendAll: EventAttend[] = [];
+  SelectEventAttend: EventAttends = new EventAttends;
+  EventAttendAll: EventAttends[] = [];
   constructor(private http: HttpClient) { }
   
   getEventAttend() {
@@ -22,7 +22,7 @@ export class EventAttendService {
     return this.http.put(this.URL_API + '/${Users._id}',EventAttend);
   }
   deleteEventAttend(_id: string) {
-    return this.http.delete(this.URL_API + '/${_id}');
+    return this.http.delete(this.URL_API + '/' + _id);
   }
   getEventAttendByid(_id: any) {
     return this.http.get(this.URL_API + '/' +  _id);

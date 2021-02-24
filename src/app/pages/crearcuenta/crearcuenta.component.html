@@ -23,12 +23,12 @@
                     <div class="row">
                         <div class="input-field col-lg-6">
                             <p>Nombre (s)</p>
-                            <input class="form-control" #firstName="ngModel" type="text" name="firstName"
+                            <input  id="LetrasNombre" class="form-control" #firstName="ngModel" type="text" name="firstName"
                                 [(ngModel)]="usersService.SelectUser.firstName" placeholder="Ingresa tu nombre">
                         </div>
                         <div class="input-field col-lg-6">
                             <p>Apellido (s)</p>
-                            <input class="form-control" #lastName="ngModel" type="text" name="lastName"
+                            <input id="LetrasApellidos" class="form-control" #lastName="ngModel" type="text" name="lastName"
                                 [(ngModel)]="usersService.SelectUser.lastName" placeholder="Ingresa tus apellidos">
                         </div>
                         <div class="input-field col-lg-6">
@@ -69,8 +69,7 @@
                         </div>
                         <div class="input-field col-lg-6">
                             <p>Confirmar contraseña</p>
-                            <input id="Confpassword"  class="form-control" type="password" name="Confpassword"
-                                placeholder="Confirmar contraseña">
+                            <input id="Confpassword"  class="form-control" type="password"placeholder="Confirmar contraseña">
                         </div>
                     </div>
                     <div class="card-action">

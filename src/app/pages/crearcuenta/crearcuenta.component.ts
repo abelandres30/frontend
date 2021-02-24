@@ -15,11 +15,23 @@ import Swal from 'sweetalert2';
 })
 export class CrearcuentaComponent implements OnInit {
   booleanosUserExist: boolean = false;
-  confirPass: string = "";
   constructor(public usersService: UsersService, private router: Router) { }
 
   ngOnInit() {
     this.LimpiarForm();
+
+
+    //este es el codigo para limitar a que los input solo acepten letras
+    $('#LetrasNombre,#LetrasApellidos').keypress(function(tecla){
+      var regex = new RegExp("^[a-zA-Z ]+$");
+      var key = String.fromCharCode(!tecla.charCode ? tecla.which : tecla.charCode);
+      if (!regex.test(key)) {
+        tecla.preventDefault();
+      }
+      return true;
+
+    }); 
+   
   }
 
   AgregarCuenta(form: NgForm) {
@@ -33,39 +45,39 @@ export class CrearcuentaComponent implements OnInit {
       if (!/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)+$/.test(form.value.email)) {
         Swal.fire({
           icon: 'error',
-          text: 'el correo ingresado no es valido',
+          text: 'el correo ingresado es incorrecto',
         })
       } else if (form.value.password.length < 8) {
-
         Swal.fire({
           icon: 'error',
-          text: 'La contraseña debe contener al menos 8 digitos',
+          text: 'La contraseña debe tener un minimo de 8 caracteres',
         })
       } else {
         if (this.booleanosUserExist) {
           Swal.fire({
             icon: 'error',
-            text: 'El correo ingresado ya existe',
+            text: 'La cuenta con ese correo electronico ya existe',
           })
         } else {
-          if (this.confirPass === form.value.password) {
+          var confirPass = $("#Confpassword").val();
+          if (confirPass === form.value.password) {
             this.usersService.postUsers(form.value)
               .subscribe(newpres => {
                 this.LimpiarForm(form);
                 Swal.fire({
                   icon: 'success',
-                  title: 'Se creo con exito la cuenta',
+                  title: 'Usuario registrado correctamente',
                   showConfirmButton: true,
                 }).then((result) => {
                   if (result.value) {
-                    this.router.navigate(['menu']);
+                    this.router.navigate(['login']);
                   }
                 })
               });
           } else {
             Swal.fire({
               icon: 'error',
-              text: 'Las contraseñas no coinciden',
+              text: 'Las contraseña no coincide',
             })
           }
 
@@ -73,8 +85,6 @@ export class CrearcuentaComponent implements OnInit {
 
       }
     }
-
-
   }
 
   LimpiarForm(form?: NgForm) {
@@ -85,7 +95,6 @@ export class CrearcuentaComponent implements OnInit {
   }
   ObtenerUsers(form: NgForm) {
     form.value.gender = $('input[name="radioButton"]:checked').val();
-    this.confirPass = $("#Confpassword").toString();
 
     this.booleanosUserExist = false;
     this.usersService.getUsers()
@@ -99,4 +108,6 @@ export class CrearcuentaComponent implements OnInit {
         this.AgregarCuenta(form);
       });
   }
+
+  
 }

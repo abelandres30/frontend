@@ -4,3 +4,11 @@
 .EspacioEventos {
     margin-left: 20%;
 }
+#map{
+    width: 100%;
+    height:300px;
+    margin-block-start: 2%;
+}
+#exampleModal{
+    background-color:transparent;
+}

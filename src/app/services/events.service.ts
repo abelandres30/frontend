@@ -24,11 +24,10 @@ export class EventsService {
     return this.http.post(this.URL_API,Events);
   } 
   postImagenes(image:any) {
-   
     return this.http.post(this.URL_APII,image);
   }   
-  putEvents(Events: Events) {
-    return this.http.put(this.URL_API + '/${Users._id}',Events);
+  putEvents( Events: Events) {
+    return this.http.put(this.URL_API + '/' + Events._id,Events);
   }
   deleteEvents(_id: string) {
     return this.http.delete(this.URL_API + '/${_id}');
