@@ -14,14 +14,14 @@
     <app-navbar></app-navbar>
     <div class="container">
         <div class="EspacioEventos" *ngFor="let event of eventsService.EventsAllPager; index as i">
-            <div class="card" style="width: 42rem;">
+            <div class="card" >
                 <img class="card-img-top" src="{{event.imagen}}" style="height: 250px">
                 <div class="card-body">
                     <div class="row">
-                        <div class="col-lg-6 col-sm-6 col-12">
+                        <div class="col-lg-6 col-sm-6 col-6">
                             <h6>{{event.title}}</h6>
                         </div>
-                        <div class="col-lg-6 col-sm-6 col-12" id="attendances">
+                        <div class="col-lg-6 col-sm-6 col-6" id="attendances">
                             <h6>{{event.attendances}}</h6>  
                         </div>
                     </div>
@@ -38,10 +38,10 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-lg-6 col-sm-6 col-12">
+                        <div class="col-lg-6 col-sm-6 col-6">
                             <h6>{{event.description}}</h6>
                         </div>
-                        <div class="col-lg-6 col-sm-6 col-12">
+                        <div class="col-lg-6 col-sm-6 col-6">
                             <button *ngIf="!booleanEvent[i]" class="form-control btn btn-success" (click)="AsistirEvent(event._id,i)">Asistire</button>
                             <button *ngIf="booleanEvent[i]" class="form-control btn btn-danger" (click)="CancelarEvent(event._id,i)">Cancelar Asistencia</button>
                         </div>
@@ -74,21 +74,6 @@
             </ul>
         </nav>
     </div>
-    <!-- Modal -->
-<!-- <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog " role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Ubicacion del evento</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          <div id="map"></div>
-        </div>
-      </div>
-    </div>
-  </div> -->
+
 </body>
 </html>

@@ -1,8 +1,21 @@
 .container {
     margin-block-start: 6%;
 }
-.EspacioEventos {
-    margin-left: 20%;
+
+@media (min-width: 767px) {
+    .EspacioEventos {
+        margin-left: 20%;
+    }
+}
+@media (max-width: 900px) {
+    .EspacioEventos {
+        margin-block-start: 14%;
+    }
+}
+@media (max-width: 400px) {
+    .EspacioEventos {
+        margin-block-start: 20%;
+    }
 }
 #map{
     width: 100%;
@@ -11,4 +24,12 @@
 }
 #exampleModal{
     background-color:transparent;
+}
+.card {
+    width: 42rem;
+}
+@media (max-width: 800px) {
+    .card {
+        width: 24rem;
+    }   
 }
