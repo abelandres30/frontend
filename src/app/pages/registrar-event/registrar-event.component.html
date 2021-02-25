@@ -29,9 +29,7 @@
                             <input type="text" class="form-control" #title="ngModel" name="title" 
                             [(ngModel)]="eventService.SelectEvent.title" placeholder="Ingrese titulo del evento">
                             <p style="margin-block-start: 12%;">Descricion</p>
-                            <!-- <input type="text" class="form-control" #title="ngModel" name="title" 
-                            [(ngModel)]="eventService.SelectEvent.title" placeholder="Ingrese titulo del evento"> -->
-                            <div class="form-group">
+                              <div class="form-group">
                                 <textarea  #description="ngModel" name="description" 
                                 [(ngModel)]="eventService.SelectEvent.description" class="form-control" id="exampleFormControlTextarea1" rows="3"
                                 placeholder="Ingrese Descricion del evento"></textarea>
@@ -64,7 +62,6 @@
                             <p id="coordenadas"></p>
                         </div>
                       </div>
-
                     <div class="card-action"> 
                         <div class="row">
                             <div (click)="cancelar(eventForm)" class="input-field col-lg-4 col-sm-4 col-12" style="width: 100%; margin-left: 17%;">
@@ -80,5 +77,4 @@
         </div>
     </div>
 </body>
-
 </html>

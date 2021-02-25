@@ -46,8 +46,7 @@ export class LoginComponent implements OnInit {
             }
           }
           if (this.booleanUser) {
-              form.reset();
-              this.usersService.SelectUser = new Users();
+              this.LimpiarForm();
               localStorage.setItem('idUser',this.idUser);
               this.router.navigate(['menu']);
           } else {

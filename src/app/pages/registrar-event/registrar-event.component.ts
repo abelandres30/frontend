@@ -148,20 +148,6 @@ export class RegistrarEventComponent implements OnInit {
     this.formData.append("imagen", form.value.image);
   }
   cancelar(form: NgForm) {
-    var mapboxgl = require('mapbox-gl/dist/mapbox-gl.js');
-
-    var geocoder = new MapboxGeocoder({
-      accessToken: mapboxgl.accessToken,
-      trackProximity: true,
-      mapboxgl: mapboxgl,
-      });
-
-    geocoder.on('result', function(e) {
-        var latitud = e.result.center[0];
-        var longitud = e.result.center[1];
-        var coordenadas = latitud + ',' + longitud;
-        console.log(coordenadas);
-      });
     if (form.value.title !== "" || form.value.description !== "" || this.fileImage !== "" || form.value.date.length !== undefined) {
       Swal.fire({
         title: 'Si continua con la navegacion, perdera lo capturado. ¿desea continuar?',
@@ -175,10 +161,8 @@ export class RegistrarEventComponent implements OnInit {
           this.router.navigate(['menu']);
         }
       })
-
     } else {
       this.router.navigate(['menu']);
-
     }
   }
 }

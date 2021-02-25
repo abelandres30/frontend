@@ -9,8 +9,8 @@ import { PaginacionService } from '../../services/paginacion.service';
 import { UsersService } from '../../services/users.service';
 import { EventAttendService } from '../../services/event-attend.service'
 import { EventAttends } from 'src/app/models/eventAttend';
-import * as MapboxGeocoder from '@mapbox/mapbox-gl-geocoder';
 
+// Es una clase para definir las variables para la tabla de Asistencia 
 class EventAttend {
   UserID: string = "";
   EventID: string = "";
@@ -34,15 +34,11 @@ export class MenuComponent implements OnInit {
     private eventAttendService: EventAttendService) { }
 
   ngOnInit() {
-
-
     this.id = localStorage.getItem('idUser');
     this.obtenerUser();
     this.obtenerEventsMios();
-
-
-
   }
+
   obtenerEventsMios() {
     this.eventAttendService.EventAttendAll = [];
     this.eventsService.EventsAll = [];
@@ -51,10 +47,8 @@ export class MenuComponent implements OnInit {
       .subscribe(res => {
         this.eventAttendService.EventAttendAll = res as EventAttends[];
         this.obtenerEvents();
-
       });
   }
-
 
   obtenerEvents() {
     this.eventsService.getEvents()
@@ -64,7 +58,6 @@ export class MenuComponent implements OnInit {
         this.obtenerTrues();
         this.totalEvents = this.eventsService.EventsAll.length;
         this.route.queryParams.subscribe(params => { //toma variable del url
-
           if (params['pagina'] != null || params['pagina'] >= 0) {
             this.setPage(params['pagina']);
           } else {
@@ -72,8 +65,8 @@ export class MenuComponent implements OnInit {
           }
         });
       });
-
   }
+
   obtenerTrues() {
     let Entro = false;
     for (let i = 0; i < this.eventsService.EventsAll.length; i++) {
@@ -83,22 +76,18 @@ export class MenuComponent implements OnInit {
           this.booleanEvent.push(true);
           Entro = true;
         }
-
       }
       if (Entro === false) {
         this.booleanEvent.push(false);
-
       }
     }
-
   }
+
   AsistirEvent(eventInfo: any, i: number) {
     const registro = new EventAttend();
     registro.EventID = eventInfo;
     registro.UserID = this.id;
     registro.willYouAttend = true;
-
-
     if (eventInfo !== undefined) {
       this.eventAttendService.postEventAttend(registro)
         .subscribe(res => {
@@ -122,7 +111,6 @@ export class MenuComponent implements OnInit {
           });
       }
     }
-
   }
 
   ModificarEvent(eventInfo: any, i: number) {
@@ -141,7 +129,7 @@ export class MenuComponent implements OnInit {
       });
   }
 
-
+// aqui es donde implemento la paginacion
   setUrl(page: number) {
     this.router.navigate(['/menu'], { queryParams: { pagina: page } });
   }
@@ -160,6 +148,7 @@ export class MenuComponent implements OnInit {
     this.eventsService.EventsAllPager = this.eventsService.EventsAll.slice(this.pager.startIndex, this.pager.endIndex + 1);
     this.pager.currentPage = this.pager.currentPage;
   }
+
   ObtenerLocalizaciones(lugar: string,i: number) {
     this.posicion = -1;
     setTimeout(function(){ 
@@ -175,12 +164,10 @@ export class MenuComponent implements OnInit {
       var marker = new mapboxgl.Marker()
         .setLngLat([CoordenadaSeparada[0], CoordenadaSeparada[1]])
         .addTo(map);
-
      }, 1000);
      this.posicion = i;
-
-    
   }
+
   obtenerUser() {
     this.usersService.getUserByid(this.id)
       .subscribe(user => {
